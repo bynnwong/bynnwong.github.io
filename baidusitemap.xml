@@ -3,13 +3,14 @@
 
 
     
+    
   <url>
     <loc>http://yoursite.com/2017/12/17/test-new-blog/</loc>
-    <lastmod>2017-12-17T06:41:29.258Z</lastmod>
+    <lastmod>2017-12-17T15:09:51.117Z</lastmod>
     <data>
         <display>
-        <title>test new blog</title>
-        <pubTime>2017-12-17T06:34:13.000Z</pubTime>
+        <title>Diary</title>
+        <pubTime>2017-12-17T14:54:13.000Z</pubTime>
         
          
            
@@ -19,12 +20,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/16/TesT/</loc>
-    <lastmod>2017-12-16T15:37:13.783Z</lastmod>
+    <loc>http://yoursite.com/2017/11/09/hello-world/</loc>
+    <lastmod>2017-12-17T15:09:50.394Z</lastmod>
     <data>
         <display>
-        <title>TesT</title>
-        <pubTime>2017-12-16T15:37:13.000Z</pubTime>
+        <title>图片</title>
+        <pubTime>2017-11-09T06:33:32.000Z</pubTime>
         
          
            
@@ -33,18 +34,4 @@
     </url>
 
     
-  <url>
-    <loc>http://yoursite.com/2017/12/16/hello-world/</loc>
-    <lastmod>2017-12-16T06:05:57.175Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-12-16T06:05:57.174Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
 </urlset>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>走在路上</title>
+  
+  <subtitle>再見</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-12-17T15:09:51.117Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Bynn</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Diary</title>
+    <link href="http://yoursite.com/2017/12/17/test-new-blog/"/>
+    <id>http://yoursite.com/2017/12/17/test-new-blog/</id>
+    <published>2017-12-17T14:54:13.000Z</published>
+    <updated>2017-12-17T15:09:51.117Z</updated>
+    
+    <content type="html"><![CDATA[<p> 　　浏览网页偶然看到一个博客主题很简约，去掉多余的功能，大量留白，剩下的空间书写，<br>就像在写字纸日记一样，这感觉很 <code>奇特</code>！</p><h2 id="喜欢这种纯粹的产品"><a href="#喜欢这种纯粹的产品" class="headerlink" title="喜欢这种纯粹的产品"></a>喜欢这种纯粹的产品</h2><h3 id="所以有一个搭建的想法"><a href="#所以有一个搭建的想法" class="headerlink" title="所以有一个搭建的想法"></a>所以有一个搭建的想法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查阅了一下资料，是利用Hexo 把写的代码渲染成 静态网页</span><br></pre></td></tr></table></figure><p>所有的东西都由创作者自由编辑，和自己在服务器搭建个人博客没什么<code>两样</code></p><h3 id="完全自主"><a href="#完全自主" class="headerlink" title="完全自主"></a>完全自主</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">笔流连在纸张</span><br></pre></td></tr></table></figure><p>   但是需要一定代码基础和前端技术，作为一个只会增删补改的射击师，还是有点挑战，<br>   总能放弃吧，碰到了很多问题，Google到了答案，经过两天的摸索，终于大概怎么去部署<br>   Hexo+GitHub安装插件了，由于对Linux不是特别熟悉，在服务器搭建走了不少弯路，建议，先在本地搭建，对服务器不熟的建议选择Ubuntu，环境比Centos好很多免得很多东西没安装会报错，别问我为什么喜欢Centos，喜欢纯粹的系统QAQ</p><h3 id="Git版本控制-Github远程仓库"><a href="#Git版本控制-Github远程仓库" class="headerlink" title="Git版本控制 Github远程仓库"></a>Git版本控制 Github远程仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">会比较容易</span><br></pre></td></tr></table></figure><p>  回过头，想想，其实也不难，每个人环境不同，工具不同，有时后会遇到问题，这很正常，<br>通常Google下都会解答，好好看，为什么要这么做，而不是死记硬背硬套，</p><h3 id="Stay-Hungry-Stay-Foolish"><a href="#Stay-Hungry-Stay-Foolish" class="headerlink" title="Stay Hungry Stay Foolish"></a>Stay Hungry Stay Foolish</h3><p> 最后给用腾讯云Centos7.X的童鞋<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$  npm install -g hexo-cli</span><br><span class="line">  先yum -y install openssl</span><br></pre></td></tr></table></figure></p><p>   这个困扰我半个小时QAQ 其他命令官网都有说明<br>   英文不太好的童鞋 eg me 可以用Chrome 右键翻译为汉语</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 　　浏览网页偶然看到一个博客主题很简约，去掉多余的功能，大量留白，剩下的空间书写，&lt;br&gt;就像在写字纸日记一样，这感觉很 &lt;code&gt;奇特&lt;/code&gt;！&lt;/p&gt;
+&lt;h2 id=&quot;喜欢这种纯粹的产品&quot;&gt;&lt;a href=&quot;#喜欢这种纯粹的产品&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>图片</title>
+    <link href="http://yoursite.com/2017/11/09/hello-world/"/>
+    <id>http://yoursite.com/2017/11/09/hello-world/</id>
+    <published>2017-11-09T06:33:32.000Z</published>
+    <updated>2017-12-17T15:09:50.394Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="七牛云-图床-实名认证也就算了"><a href="#七牛云-图床-实名认证也就算了" class="headerlink" title="七牛云 图床 实名认证也就算了"></a>七牛云 图床 实名认证也就算了</h2><h3 id="还要手持身份证-WTF"><a href="#还要手持身份证-WTF" class="headerlink" title="还要手持身份证 WTF"></a>还要手持身份证 WTF</h3><h3 id="有一种裸贷的感觉"><a href="#有一种裸贷的感觉" class="headerlink" title="有一种裸贷的感觉"></a>有一种<code>裸贷</code>的感觉</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;七牛云-图床-实名认证也就算了&quot;&gt;&lt;a href=&quot;#七牛云-图床-实名认证也就算了&quot; class=&quot;headerlink&quot; title=&quot;七牛云 图床 实名认证也就算了&quot;&gt;&lt;/a&gt;七牛云 图床 实名认证也就算了&lt;/h2&gt;&lt;h3 id=&quot;还要手持身份证-WTF&quot;&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
