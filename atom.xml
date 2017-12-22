@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-22T14:51:17.565Z</updated>
+  <updated>2017-12-22T17:06:12.492Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hexo 基本命令</title>
+    <title>总结 hexo 基本命令</title>
     <link href="http://yoursite.com/2017/12/22/hexo-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2017/12/22/hexo-基本命令/</id>
     <published>2017-12-22T14:51:17.000Z</published>
-    <updated>2017-12-22T14:51:17.565Z</updated>
+    <updated>2017-12-22T17:06:12.492Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>总结   修改重要文件一定要先备份</li><li><p>Hexo   本地写文章一定先进入 安装文件夹</p><pre><code>&gt;hexo s  (端口被占用 hexo s -p 5000)&gt;hexo g  (编译)&gt;hexo d  (push github)&gt;hexo new&quot;postName&quot; #新建文章&gt;hexo new page&quot;pageName&quot; #新建页面&gt;hexo generate #生成静态页面至public目录&gt;hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）&gt;hexo deploy #将.deploy目录部署到GitHub&gt;hexo help # 查看帮助&gt;hexo version #查看Hexo的版本</code></pre></li></ul><hr><p>一般用 <figure class="highlight plain"><figcaption><span>语言 这种语法表示代码区域，如:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` javascript</span><br><span class="line">            test</span><br></pre></td></tr></table></figure></p><hr><ul><li>报错总结</li></ul><hr><p>ERROR Deployer not found: git 或者 ERROR Deployer not found: github</p><p>解决方法： npm install hexo-deployer-git –save</p><hr><p>如发生报错： ERROR Process failed: layout/.DS_Store , 那么进入主题里面layout和_partial目录下，使用删除命令：</p><p>rm-rf.DS_Store</p><hr><p>ERROR Plugin load failed: hexo-server</p><p>原因：</p><p>Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.</p><p>解决方法，执行命令：</p><p>sudo npm install hexo-server</p><p>执行命令hexo server，提示：Usage: hexo ….</p><p>原因：</p><p>我认为是没有生成本地服务</p><p>解决方法，执行命令：</p><p>npm install hexo-server –save</p><hr><p>提示：hexo-server@0.1.2 node_modules/hexo-server</p><p>….</p><p>表示成功了参考</p><p>这个时候再执行：</p><p>hexo-server</p><p>得到:</p><p>INFOHexois running at <a href="http://0.0.0.0:4000/.PressCtrl+C" target="_blank" rel="noopener">http://0.0.0.0:4000/.PressCtrl+C</a> to stop.</p><p>这个时候再点击<a href="http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：" target="_blank" rel="noopener">http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：</a></p><p>白板和Cannot GET / 几个字</p><p>原因：</p><p>由于2.6以后就更新了，我们需要手动配置些东西，我们需要输入下面三行命令：</p><p>npm install hexo-renderer-ejs –save</p><p>npm install hexo-renderer-stylus –save</p><p>npm install hexo-renderer-marked –save</p><p>这个时候再重新生成静态文件，命令：</p><p>hexo generate（或hexo g）</p><p>启动本地服务器：</p><p>hexo server（或hexo s）</p><hr><ul><li><p>Makedown 原生方式</p><p>  | Name | Academy | score |<br>  | - | :-: | -: |<br>  | Harry Potter | Gryffindor| 90 |<br>  | Hermione Granger | Gryffindor | 100 |<br>  | Draco Malfoy | Slytherin | 90 |</p></li></ul><p>Name    Academy     score<br>Harry Potter    Gryffindor  90<br>Hermione Granger    Gryffindor  100<br>Draco Malfoy    Slytherin   90</p><p>语法说明： 1. 不管是哪种方式，第一行为表头，第二行分隔表头和主体部分，第三行开始每一行代表一个表格行；</p><ol><li>列与列之间用管道符号 “|” 隔开，原生方式的表格每一行的两边也要有管道符。</li><li>可在第二行指定不同列单元格内容的对齐方式，默认为左对齐，在 “-” 右边加上 “:” 为右对齐，在 “-” 两侧同时加上 “:” 为居中对齐。</li></ol><ul><li><p>更改nginx网站根目录<br>默认网站根目录为/usr/local/nginx/html，要将它改成/homw/www<br>vi /usr/local/nginx/conf/nginx.conf<br>将其中的</p><pre><code>location / {    root   html;    index  index.php index.html index.htm;}</code></pre><p>改为</p><pre><code>location / {    root   /home/www;    index  index.php index.html index.htm;}</code></pre><p>然后再将<br>location ~ .php$ {</p><pre><code>    root           html;    fastcgi_pass   127.0.0.1:9000;    fastcgi_index  index.php;    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;    include        fastcgi_params;}</code></pre><p>改为<br>location ~ .php$ {</p><pre><code>    root           /home/www;    fastcgi_pass   127.0.0.1:9000;    fastcgi_index  index.php;    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;    include        fastcgi_params;}</code></pre><p>然后重启nginx<br>已经安装了samba，所以要将vi /etc/samba/smb.conf中的[public]下的path值改为<br>path = /home/www/</p></li></ul>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;总结   修改重要文件一定要先备份&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hexo   本地写文章一定先进入 安装文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;hexo s  (端口被占用 hexo s -p 5000)
+&amp;gt;hexo g  (编译)
+&amp;gt;hexo d
+      
     
     </summary>
     
@@ -80,10 +92,10 @@
   
   <entry>
     <title>图片</title>
-    <link href="http://yoursite.com/2017/11/09/hello-world/"/>
-    <id>http://yoursite.com/2017/11/09/hello-world/</id>
-    <published>2017-11-09T06:33:32.000Z</published>
-    <updated>2017-12-17T15:09:50.394Z</updated>
+    <link href="http://yoursite.com/2017/12/17/hello-world/"/>
+    <id>http://yoursite.com/2017/12/17/hello-world/</id>
+    <published>2017-12-17T06:33:32.000Z</published>
+    <updated>2017-12-22T17:06:18.189Z</updated>
     
     <content type="html"><![CDATA[<h2 id="七牛云-图床-实名认证也就算了"><a href="#七牛云-图床-实名认证也就算了" class="headerlink" title="七牛云 图床 实名认证也就算了"></a>七牛云 图床 实名认证也就算了</h2><h3 id="还要手持身份证-WTF"><a href="#还要手持身份证-WTF" class="headerlink" title="还要手持身份证 WTF"></a>还要手持身份证 WTF</h3><h3 id="有一种裸贷的感觉"><a href="#有一种裸贷的感觉" class="headerlink" title="有一种裸贷的感觉"></a>有一种<code>裸贷</code>的感觉</h3>]]></content>
     
