@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/12/22/http%E8%BD%AChttps/</loc>
+    <lastmod>2017-12-22T16:49:02.745Z</lastmod>
+    <data>
+        <display>
+        <title>HTTP+SSL PLUS</title>
+        <pubTime>2017-12-22T14:50:21.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/22/hexo-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-12-22T14:51:17.565Z</lastmod>
+    <data>
+        <display>
+        <title>hexo 基本命令</title>
+        <pubTime>2017-12-22T14:51:17.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/12/17/test-new-blog/</loc>
     <lastmod>2017-12-17T15:53:45.392Z</lastmod>
     <data>
