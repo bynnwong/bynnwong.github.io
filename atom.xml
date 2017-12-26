@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-22T17:06:12.492Z</updated>
+  <updated>2017-12-26T14:26:46.929Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Test</title>
+    <link href="http://yoursite.com/2017/12/26/Test/"/>
+    <id>http://yoursite.com/2017/12/26/Test/</id>
+    <published>2017-12-26T14:26:46.000Z</published>
+    <updated>2017-12-26T14:26:46.929Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>总结 hexo 基本命令</title>
