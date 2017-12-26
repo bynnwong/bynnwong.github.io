@@ -5,57 +5,14 @@
     
   <url>
     <loc>http://yoursite.com/2017/12/26/Test/</loc>
-    <lastmod>2017-12-26T14:26:46.929Z</lastmod>
+    <lastmod>2017-12-26T15:02:37.347Z</lastmod>
     <data>
         <display>
         <title>Test</title>
         <pubTime>2017-12-26T14:26:46.000Z</pubTime>
         
+        <tag>无</tag>
          
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/17/hello-world/</loc>
-    <lastmod>2017-12-22T17:06:18.189Z</lastmod>
-    <data>
-        <display>
-        <title>图片</title>
-        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/22/hexo-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-12-22T17:06:12.492Z</lastmod>
-    <data>
-        <display>
-        <title>总结 hexo 基本命令</title>
-        <pubTime>2017-12-22T14:51:17.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/22/http%E8%BD%AChttps/</loc>
-    <lastmod>2017-12-22T16:49:02.745Z</lastmod>
-    <data>
-        <display>
-        <title>HTTP+SSL PLUS</title>
-        <pubTime>2017-12-22T14:50:21.000Z</pubTime>
-        
          
            
         </display>
@@ -65,12 +22,65 @@
     
   <url>
     <loc>http://yoursite.com/2017/12/17/test-new-blog/</loc>
-    <lastmod>2017-12-17T15:53:45.392Z</lastmod>
+    <lastmod>2017-12-26T15:02:16.369Z</lastmod>
     <data>
         <display>
         <title>Diary</title>
         <pubTime>2017-12-17T14:54:13.000Z</pubTime>
         
+        <tag>日记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/22/http%E8%BD%AChttps/</loc>
+    <lastmod>2017-12-26T15:02:10.769Z</lastmod>
+    <data>
+        <display>
+        <title>HTTP+SSL PLUS</title>
+        <pubTime>2017-12-22T14:50:21.000Z</pubTime>
+        
+        <tag>SSL</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/17/hello-world/</loc>
+    <lastmod>2017-12-26T15:01:58.930Z</lastmod>
+    <data>
+        <display>
+        <title>图片</title>
+        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
+        
+        <tag>Test</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/22/hexo-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-12-26T15:01:55.913Z</lastmod>
+    <data>
+        <display>
+        <title>总结 hexo 基本命令</title>
+        <pubTime>2017-12-22T14:51:17.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
          
            
         </display>
