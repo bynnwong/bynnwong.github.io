@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://wongb.in/2017/12/17/test-new-blog/</loc>
-    <lastmod>2017-12-26T15:42:28.344Z</lastmod>
+    <loc>http://wongb.in/2017/12/26/Test/</loc>
+    <lastmod>2017-12-26T15:51:57.051Z</lastmod>
     <data>
         <display>
-        <title>Diary</title>
-        <pubTime>2017-12-17T14:54:13.000Z</pubTime>
+        <title>Test</title>
+        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
         
-        <tag>日记</tag>
+        <tag>无</tag>
          
          
            
@@ -21,14 +21,14 @@
 
     
   <url>
-    <loc>http://wongb.in/2017/12/26/Test/</loc>
-    <lastmod>2017-12-26T15:38:15.515Z</lastmod>
+    <loc>http://wongb.in/2017/12/17/test-new-blog/</loc>
+    <lastmod>2017-12-26T15:42:28.344Z</lastmod>
     <data>
         <display>
-        <title>Test</title>
-        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
+        <title>Diary</title>
+        <pubTime>2017-12-17T14:54:13.000Z</pubTime>
         
-        <tag>无</tag>
+        <tag>日记</tag>
          
          
            
@@ -87,6 +87,5 @@
     </data>
     </url>
 
-    
     
 </urlset>
