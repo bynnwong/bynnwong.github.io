@@ -5,13 +5,30 @@
     
   <url>
     <loc>http://wongb.in/2017/12/27/%E6%8D%A2%E7%8E%AF%E5%A2%83%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2017-12-27T03:50:17.265Z</lastmod>
+    <lastmod>2017-12-27T04:30:33.805Z</lastmod>
     <data>
         <display>
         <title>换环境更新博客方法</title>
         <pubTime>2017-12-27T03:47:56.000Z</pubTime>
         
         <tag>hexo</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wongb.in/2017/12/17/hello-world/</loc>
+    <lastmod>2017-12-27T04:28:13.314Z</lastmod>
+    <data>
+        <display>
+        <title>Image</title>
+        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
+        
+        <tag>Test</tag>
          
          
            
@@ -63,23 +80,6 @@
         <pubTime>2017-12-22T14:50:21.000Z</pubTime>
         
         <tag>SSL</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wongb.in/2017/12/17/hello-world/</loc>
-    <lastmod>2017-12-27T03:05:31.904Z</lastmod>
-    <data>
-        <display>
-        <title>image</title>
-        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
-        
-        <tag>Test</tag>
          
          
            
