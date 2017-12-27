@@ -4,14 +4,32 @@
 
     
   <url>
-    <loc>http://wongb.in/2017/12/26/Test/</loc>
-    <lastmod>2017-12-26T15:51:57.051Z</lastmod>
+    <loc>http://wongb.in/2017/12/17/hello-world/</loc>
+    <lastmod>2017-12-27T03:05:31.904Z</lastmod>
     <data>
         <display>
-        <title>Test</title>
-        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
+        <title>image</title>
+        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
         
-        <tag>无</tag>
+        <tag>Test</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://wongb.in/2017/12/22/http%E8%BD%AChttps/</loc>
+    <lastmod>2017-12-27T02:58:13.901Z</lastmod>
+    <data>
+        <display>
+        <title>HTTP+SSL</title>
+        <pubTime>2017-12-22T14:50:21.000Z</pubTime>
+        
+        <tag>SSL</tag>
          
          
            
@@ -22,7 +40,7 @@
     
   <url>
     <loc>http://wongb.in/2017/12/17/test-new-blog/</loc>
-    <lastmod>2017-12-26T15:42:28.344Z</lastmod>
+    <lastmod>2017-12-27T02:57:59.069Z</lastmod>
     <data>
         <display>
         <title>Diary</title>
@@ -38,14 +56,14 @@
 
     
   <url>
-    <loc>http://wongb.in/2017/12/22/http%E8%BD%AChttps/</loc>
-    <lastmod>2017-12-26T15:37:34.964Z</lastmod>
+    <loc>http://wongb.in/2017/12/26/Test/</loc>
+    <lastmod>2017-12-27T02:49:42.190Z</lastmod>
     <data>
         <display>
-        <title>HTTP+SSL PLUS</title>
-        <pubTime>2017-12-22T14:50:21.000Z</pubTime>
+        <title>Hexo标签页生成</title>
+        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
         
-        <tag>SSL</tag>
+        <tag>hexo</tag>
          
          
            
@@ -54,38 +72,5 @@
     </url>
 
     
-  <url>
-    <loc>http://wongb.in/2017/12/22/hexo-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-12-26T15:36:43.013Z</lastmod>
-    <data>
-        <display>
-        <title>总结 hexo 基本命令</title>
-        <pubTime>2017-12-22T14:51:17.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wongb.in/2017/12/17/hello-world/</loc>
-    <lastmod>2017-12-26T15:01:58.930Z</lastmod>
-    <data>
-        <display>
-        <title>图片</title>
-        <pubTime>2017-12-17T06:33:32.000Z</pubTime>
-        
-        <tag>Test</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
 </urlset>
