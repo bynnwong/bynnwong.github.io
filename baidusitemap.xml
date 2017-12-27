@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://wongb.in/2017/12/26/Test/</loc>
+    <lastmod>2017-12-27T04:48:32.360Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo标签页生成</title>
+        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wongb.in/2017/12/27/cPanel%E4%B8%BB%E6%9C%BA%E4%B8%AD%E5%A6%82%E4%BD%95%E5%BC%BA%E5%88%B6%E4%BD%BF%E7%94%A8HTTPS/</loc>
-    <lastmod>2017-12-27T04:46:39.010Z</lastmod>
+    <lastmod>2017-12-27T04:48:14.504Z</lastmod>
     <data>
         <display>
         <title>cPanel主机中如何强制使用HTTPS</title>
@@ -98,23 +115,6 @@
         <pubTime>2017-12-17T14:54:13.000Z</pubTime>
         
         <tag>日记</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wongb.in/2017/12/26/Test/</loc>
-    <lastmod>2017-12-27T02:49:42.190Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo标签页生成</title>
-        <pubTime>2017-12-26T14:26:46.000Z</pubTime>
-        
-        <tag>hexo</tag>
          
          
            
