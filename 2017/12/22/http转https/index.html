@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="走在路上">
 <meta property="og:description" content="云ESC部署SSL详细方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T02:58:13.901Z">
+<meta property="og:updated_time" content="2017-12-27T03:26:52.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP+SSL">
 <meta name="twitter:description" content="云ESC部署SSL详细方法">
@@ -371,7 +371,7 @@
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen <span class="number">443</span>;</span><br><span class="line">        server_name www.domain.com; #填写绑定证书的域名</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate <span class="number">1</span>_www.domain.com_bundle.crt;</span><br><span class="line">        ssl_certificate_key <span class="number">2</span>_www.domain.com.key;</span><br><span class="line">        ssl_session_timeout <span class="number">5</span>m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html; #站点目录</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>配置完成后，先用bin/nginx -t来测试下配置是否有误，正确无误的话，重启nginx。就可以使 <a href="http://www.1114.me" target="_blank" rel="noopener">http://www.1114.me</a> 来访问了。</p>
+<p>配置完成后，先用bin/nginx -t来测试下配置是否有误，正确无误的话，重启nginx。就可以使 <a href="https://www.1114.me" target="_blank" rel="noopener">https://www.1114.me</a> 来访问了。</p>
 <hr>
 <ul>
 <li>注：</li>
@@ -572,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -679,7 +679,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共1.8k字</span>
+  <span class="post-count">全站共1.9k字</span>
 </div>
 
         
