@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VPS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="走在路上" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="测试脚本 bench.sh 以及用法">
+<meta name="keywords" content="VPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一键自动化测试脚本bench.sh">
+<meta property="og:url" content="http://wongb.in/2017/12/29/一键自动化测试脚本bench-sh/index.html">
+<meta property="og:site_name" content="走在路上">
+<meta property="og:description" content="测试脚本 bench.sh 以及用法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-29T13:04:30.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一键自动化测试脚本bench.sh">
+<meta name="twitter:description" content="测试脚本 bench.sh 以及用法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wongb.in/2017/12/29/一键自动化测试脚本bench-sh/"/>
+
+
+
+
+
+  <title>一键自动化测试脚本bench.sh | 走在路上</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">走在路上</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">再見</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wongb.in/2017/12/29/一键自动化测试脚本bench-sh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="走在路上">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一键自动化测试脚本bench.sh</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T21:01:38+08:00">
+                2017-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note danger"><p>测试脚本 bench.sh 以及用法 </p></div>
+<a id="more"></a>
+<p>总结一下 bench.sh 特点：<br>1、显示当前测试的各种系统信息；<br>2、取自世界多处的知名数据中心的测试点，下载测试比较全面；<br>3、支持 IPv6 下载测速；<br>4、IO 测试三次，并显示平均值。</p>
+<p>再配合 unixbench.sh 脚本测试，即可全面测试 VPS 的性能。</p>
+<p>使用方法：<br>命令1：<br>wget -qO- bench.sh | bash</p>
+<h1 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h1><p>curl -Lso- bench.sh | bash<br>命令2：</p>
+<p>wget -qO- 86.re/bench.sh | bash</p>
+<p>curl -so- 86.re/bench.sh | bash</p>
+<p>备注：<br>bench.sh 既是脚本名，同时又是域名。所以不要怀疑我写错了或者你看错了。</p>
+<p>一键测试脚本：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">#</span><br><span class="line"># Description: Auto test download &amp; I/O speed script</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>  [ ! -e <span class="string">'/usr/bin/wget'</span> ]; then</span><br><span class="line">    echo <span class="string">"Error: wget command not found. You must be install wget command at first."</span></span><br><span class="line">    exit <span class="number">1</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># Colors</span><br><span class="line">RED=<span class="string">'\033[0;31m'</span></span><br><span class="line">GREEN=<span class="string">'\033[0;32m'</span></span><br><span class="line">YELLOW=<span class="string">'\033[0;33m'</span></span><br><span class="line">PLAIN=<span class="string">'\033[0m'</span></span><br><span class="line"></span><br><span class="line">get_opsy() &#123;</span><br><span class="line">    [ -f /etc/redhat-release ] &amp;&amp; awk <span class="string">'&#123;print ($1,$3~/^[0-9]/?$3:$4)&#125;'</span> /etc/redhat-release &amp;&amp; <span class="keyword">return</span></span><br><span class="line">    [ -f /etc/os-release ] &amp;&amp; awk -F<span class="string">'[= "]'</span> <span class="string">'/PRETTY_NAME/&#123;print $3,$4,$5&#125;'</span> /etc/os-release &amp;&amp; <span class="keyword">return</span></span><br><span class="line">    [ -f /etc/lsb-release ] &amp;&amp; awk -F<span class="string">'[="]+'</span> <span class="string">'/DESCRIPTION/&#123;print $2&#125;'</span> /etc/lsb-release &amp;&amp; <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">next() &#123;</span><br><span class="line">    printf <span class="string">"%-70s\n"</span> <span class="string">"-"</span> | sed <span class="string">'s/\s/-/g'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speed_test() &#123;</span><br><span class="line">    local speedtest=$(wget <span class="number">-4</span>O /dev/<span class="literal">null</span> -T300 $<span class="number">1</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> | awk <span class="string">'/\/dev\/null/ &#123;speed=$3 $4&#125; END &#123;gsub(/\(|\)/,"",speed); print speed&#125;'</span>)</span><br><span class="line">    local ipaddress=$(ping -c1 -n <span class="string">`awk -F'/' '&#123;print $3&#125;' &lt;&lt;&lt; $1`</span> | awk -F<span class="string">'[()]'</span> <span class="string">'&#123;print $2;exit&#125;'</span>)</span><br><span class="line">    local nodeName=$<span class="number">2</span></span><br><span class="line">    printf <span class="string">"$&#123;YELLOW&#125;%-32s$&#123;GREEN&#125;%-24s$&#123;RED&#125;%-14s$&#123;PLAIN&#125;\n"</span> <span class="string">"$&#123;nodeName&#125;"</span> <span class="string">"$&#123;ipaddress&#125;"</span> <span class="string">"$&#123;speedtest&#125;"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speed_test_v6() &#123;</span><br><span class="line">    local speedtest=$(wget <span class="number">-6</span>O /dev/<span class="literal">null</span> -T300 $<span class="number">1</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> | awk <span class="string">'/\/dev\/null/ &#123;speed=$3 $4&#125; END &#123;gsub(/\(|\)/,"",speed); print speed&#125;'</span>)</span><br><span class="line">    local ipaddress=$(ping6 -c1 -n <span class="string">`awk -F'/' '&#123;print $3&#125;' &lt;&lt;&lt; $1`</span> | awk -F<span class="string">'[()]'</span> <span class="string">'&#123;print $2;exit&#125;'</span>)</span><br><span class="line">    local nodeName=$<span class="number">2</span></span><br><span class="line">    printf <span class="string">"$&#123;YELLOW&#125;%-32s$&#123;GREEN&#125;%-24s$&#123;RED&#125;%-14s$&#123;PLAIN&#125;\n"</span> <span class="string">"$&#123;nodeName&#125;"</span> <span class="string">"$&#123;ipaddress&#125;"</span> <span class="string">"$&#123;speedtest&#125;"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speed() &#123;</span><br><span class="line">    speed_test <span class="string">'http://cachefly.cachefly.net/100mb.test'</span> <span class="string">'CacheFly'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.tokyo.linode.com/100MB-tokyo.bin'</span> <span class="string">'Linode, Tokyo, JP'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.singapore.linode.com/100MB-singapore.bin'</span> <span class="string">'Linode, Singapore, SG'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.london.linode.com/100MB-london.bin'</span> <span class="string">'Linode, London, UK'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin'</span> <span class="string">'Linode, Frankfurt, DE'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.fremont.linode.com/100MB-fremont.bin'</span> <span class="string">'Linode, Fremont, CA'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.dal05.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Dallas, TX'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.sea01.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Seattle, WA'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.fra02.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Frankfurt, DE'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.sng01.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Singapore, SG'</span></span><br><span class="line">    speed_test <span class="string">'http://speedtest.hkg02.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, HongKong, CN'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speed_v6() &#123;</span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.atlanta.linode.com/100MB-atlanta.bin'</span> <span class="string">'Linode, Atlanta, GA'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.dallas.linode.com/100MB-dallas.bin'</span> <span class="string">'Linode, Dallas, TX'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.newark.linode.com/100MB-newark.bin'</span> <span class="string">'Linode, Newark, NJ'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.singapore.linode.com/100MB-singapore.bin'</span> <span class="string">'Linode, Singapore, SG'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.tokyo.linode.com/100MB-tokyo.bin'</span> <span class="string">'Linode, Tokyo, JP'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.sjc03.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, San Jose, CA'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.wdc01.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Washington, WA'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.par01.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Paris, FR'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.sng01.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Singapore, SG'</span></span><br><span class="line">    speed_test_v6 <span class="string">'http://speedtest.tok02.softlayer.com/downloads/test100.zip'</span> <span class="string">'Softlayer, Tokyo, JP'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">io_test() &#123;</span><br><span class="line">    (LANG=C dd <span class="keyword">if</span>=<span class="regexp">/dev/</span>zero <span class="keyword">of</span>=test_$$ bs=<span class="number">64</span>k count=<span class="number">16</span>k conv=fdatasync &amp;&amp; rm -f test_$$ ) <span class="number">2</span>&gt;&amp;<span class="number">1</span> | awk -F, <span class="string">'&#123;io=$NF&#125; END &#123; print io&#125;'</span> | sed <span class="string">'s/^[ \t]*//;s/[ \t]*$//'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calc_disk() &#123;</span><br><span class="line">    local total_size=<span class="number">0</span></span><br><span class="line">    local array=$@</span><br><span class="line">    <span class="keyword">for</span> size <span class="keyword">in</span> $&#123;array[@]&#125;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        [ <span class="string">"$&#123;size&#125;"</span> == <span class="string">"0"</span> ] &amp;&amp; size_t=<span class="number">0</span> || size_t=<span class="string">`echo <span class="subst">$&#123;size:<span class="number">0</span>:$&#123;#size&#125;</span>-1&#125;`</span></span><br><span class="line">        [ <span class="string">"`echo $&#123;size:(-1)&#125;`"</span> == <span class="string">"K"</span> ] &amp;&amp; size=<span class="number">0</span></span><br><span class="line">        [ <span class="string">"`echo $&#123;size:(-1)&#125;`"</span> == <span class="string">"M"</span> ] &amp;&amp; size=$( awk <span class="string">'BEGIN&#123;printf "%.1f", '</span>$size_t<span class="string">' / 1024&#125;'</span> )</span><br><span class="line">        [ <span class="string">"`echo $&#123;size:(-1)&#125;`"</span> == <span class="string">"T"</span> ] &amp;&amp; size=$( awk <span class="string">'BEGIN&#123;printf "%.1f", '</span>$size_t<span class="string">' * 1024&#125;'</span> )</span><br><span class="line">        [ <span class="string">"`echo $&#123;size:(-1)&#125;`"</span> == <span class="string">"G"</span> ] &amp;&amp; size=$&#123;size_t&#125;</span><br><span class="line">        total_size=$( awk <span class="string">'BEGIN&#123;printf "%.1f", '</span>$total_size<span class="string">' + '</span>$size<span class="string">'&#125;'</span> )</span><br><span class="line">    done</span><br><span class="line">    echo $&#123;total_size&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cname=$( awk -F: <span class="string">'/model name/ &#123;name=$2&#125; END &#123;print name&#125;'</span> /proc/cpuinfo | sed <span class="string">'s/^[ \t]*//;s/[ \t]*$//'</span> )</span><br><span class="line">cores=$( awk -F: <span class="string">'/model name/ &#123;core++&#125; END &#123;print core&#125;'</span> /proc/cpuinfo )</span><br><span class="line">freq=$( awk -F: <span class="string">'/cpu MHz/ &#123;freq=$2&#125; END &#123;print freq&#125;'</span> /proc/cpuinfo | sed <span class="string">'s/^[ \t]*//;s/[ \t]*$//'</span> )</span><br><span class="line">tram=$( free -m | awk <span class="string">'/Mem/ &#123;print $2&#125;'</span> )</span><br><span class="line">uram=$( free -m | awk <span class="string">'/Mem/ &#123;print $3&#125;'</span> )</span><br><span class="line">swap=$( free -m | awk <span class="string">'/Swap/ &#123;print $2&#125;'</span> )</span><br><span class="line">uswap=$( free -m | awk <span class="string">'/Swap/ &#123;print $3&#125;'</span> )</span><br><span class="line">up=$( awk <span class="string">'&#123;a=$1/86400;b=($1%86400)/3600;c=($1%3600)/60&#125; &#123;printf("%d days, %d hour %d min\n",a,b,c)&#125;'</span> /proc/uptime )</span><br><span class="line">load=$( w | head <span class="number">-1</span> | awk -F<span class="string">'load average:'</span> <span class="string">'&#123;print $2&#125;'</span> | sed <span class="string">'s/^[ \t]*//;s/[ \t]*$//'</span> )</span><br><span class="line">opsy=$( get_opsy )</span><br><span class="line">arch=$( uname -m )</span><br><span class="line">lbit=$( getconf LONG_BIT )</span><br><span class="line">kern=$( uname -r )</span><br><span class="line">ipv6=$( wget -qO- -t1 -T2 ipv6.icanhazip.com )</span><br><span class="line">disk_size1=($( LANG=C df -ahPl | grep -wvE <span class="string">'\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem'</span> | awk <span class="string">'&#123;print $2&#125;'</span> ))</span><br><span class="line">disk_size2=($( LANG=C df -ahPl | grep -wvE <span class="string">'\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem'</span> | awk <span class="string">'&#123;print $3&#125;'</span> ))</span><br><span class="line">disk_total_size=$( calc_disk $&#123;disk_size1[@]&#125; )</span><br><span class="line">disk_used_size=$( calc_disk $&#123;disk_size2[@]&#125; )</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">next</span><br><span class="line">echo <span class="string">"CPU model            : $cname"</span></span><br><span class="line">echo <span class="string">"Number of cores      : $cores"</span></span><br><span class="line">echo <span class="string">"CPU frequency        : $freq MHz"</span></span><br><span class="line">echo <span class="string">"Total size of Disk   : $disk_total_size GB ($disk_used_size GB Used)"</span></span><br><span class="line">echo <span class="string">"Total amount of Mem  : $tram MB ($uram MB Used)"</span></span><br><span class="line">echo <span class="string">"Total amount of Swap : $swap MB ($uswap MB Used)"</span></span><br><span class="line">echo <span class="string">"System uptime        : $up"</span></span><br><span class="line">echo <span class="string">"Load average         : $load"</span></span><br><span class="line">echo <span class="string">"OS                   : $opsy"</span></span><br><span class="line">echo <span class="string">"Arch                 : $arch ($lbit Bit)"</span></span><br><span class="line">echo <span class="string">"Kernel               : $kern"</span></span><br><span class="line">next</span><br><span class="line">io1=$( io_test )</span><br><span class="line">echo <span class="string">"I/O speed(1st run)   : $io1"</span></span><br><span class="line">io2=$( io_test )</span><br><span class="line">echo <span class="string">"I/O speed(2nd run)   : $io2"</span></span><br><span class="line">io3=$( io_test )</span><br><span class="line">echo <span class="string">"I/O speed(3rd run)   : $io3"</span></span><br><span class="line">ioraw1=$( echo $io1 | awk <span class="string">'NR==1 &#123;print $1&#125;'</span> )</span><br><span class="line">[ <span class="string">"`echo $io1 | awk 'NR==1 &#123;print $2&#125;'`"</span> == <span class="string">"GB/s"</span> ] &amp;&amp; ioraw1=$( awk <span class="string">'BEGIN&#123;print '</span>$ioraw1<span class="string">' * 1024&#125;'</span> )</span><br><span class="line">ioraw2=$( echo $io2 | awk <span class="string">'NR==1 &#123;print $1&#125;'</span> )</span><br><span class="line">[ <span class="string">"`echo $io2 | awk 'NR==1 &#123;print $2&#125;'`"</span> == <span class="string">"GB/s"</span> ] &amp;&amp; ioraw2=$( awk <span class="string">'BEGIN&#123;print '</span>$ioraw2<span class="string">' * 1024&#125;'</span> )</span><br><span class="line">ioraw3=$( echo $io3 | awk <span class="string">'NR==1 &#123;print $1&#125;'</span> )</span><br><span class="line">[ <span class="string">"`echo $io3 | awk 'NR==1 &#123;print $2&#125;'`"</span> == <span class="string">"GB/s"</span> ] &amp;&amp; ioraw3=$( awk <span class="string">'BEGIN&#123;print '</span>$ioraw3<span class="string">' * 1024&#125;'</span> )</span><br><span class="line">ioall=$( awk <span class="string">'BEGIN&#123;print '</span>$ioraw1<span class="string">' + '</span>$ioraw2<span class="string">' + '</span>$ioraw3<span class="string">'&#125;'</span> )</span><br><span class="line">ioavg=$( awk <span class="string">'BEGIN&#123;printf "%.1f", '</span>$ioall<span class="string">' / 3&#125;'</span> )</span><br><span class="line">echo <span class="string">"Average I/O speed    : $ioavg MB/s"</span></span><br><span class="line">next</span><br><span class="line">printf <span class="string">"%-32s%-24s%-14s\n"</span> <span class="string">"Node Name"</span> <span class="string">"IPv4 address"</span> <span class="string">"Download Speed"</span></span><br><span class="line">speed &amp;&amp; next</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"$ipv6"</span> != <span class="string">""</span> ]]; then</span><br><span class="line">    printf <span class="string">"%-32s%-24s%-14s\n"</span> <span class="string">"Node Name"</span> <span class="string">"IPv6 address"</span> <span class="string">"Download Speed"</span></span><br><span class="line">    speed_v6 &amp;&amp; next</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+  
+ 
+
+    
+
+    
+
+    
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VPS/" rel="tag"><i class="fa fa-tag"></i> VPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/27/换环境更新博客方法/" rel="next" title="换环境更新博客方法">
+                <i class="fa fa-chevron-left"></i> 换环境更新博客方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/29/linux挂载谷歌网盘-Googledrive/" rel="prev" title=" linux挂载谷歌网盘(Googledrive)">
+                 linux挂载谷歌网盘(Googledrive) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bynn</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry Stay Foolish</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ok"><span class="nav-number">1.</span> <span class="nav-text"><a href="#ok" class="headerlink" title="ok"></a>ok</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+   <i class="fa fa-paper-plane" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bynn</span>
+
+
+
+  
+</div>
+
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共5.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
