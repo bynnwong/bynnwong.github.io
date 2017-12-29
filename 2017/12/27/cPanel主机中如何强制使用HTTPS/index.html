@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="Hexo 基本操作及命令">
+<meta name="description" content="cPanel主机中如何强制使用HTTPS 基本操作及命令">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cPanel主机中如何强制使用HTTPS">
 <meta property="og:url" content="http://wongb.in/2017/12/27/cPanel主机中如何强制使用HTTPS/index.html">
 <meta property="og:site_name" content="走在路上">
-<meta property="og:description" content="Hexo 基本操作及命令">
+<meta property="og:description" content="cPanel主机中如何强制使用HTTPS 基本操作及命令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T04:48:14.504Z">
+<meta property="og:updated_time" content="2017-12-29T13:19:31.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cPanel主机中如何强制使用HTTPS">
-<meta name="twitter:description" content="Hexo 基本操作及命令">
+<meta name="twitter:description" content="cPanel主机中如何强制使用HTTPS 基本操作及命令">
 
 
 
@@ -330,7 +330,7 @@
       
 
       
-        <div class="note default"><p>Hexo 基本操作及命令 </p></div>
+        <div class="note default"><p>cPanel主机中如何强制使用HTTPS 基本操作及命令 </p></div>
 <a id="more"></a>
 <p>在网站站目录下找到 .htaccess,如果没有就新建一个,添加如下代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">         &lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;http_host&#125; ^www.aug12th.com$ [NC]</span><br><span class="line">RewriteRule ^(.*)$ https:<span class="comment">//aug12th.com/$1 [R=301,L]</span></span><br><span class="line"></span><br><span class="line">RewriteCond %&#123;SERVER_PORT&#125; !^<span class="number">443</span>$</span><br><span class="line">RewriteRule ^(.*)?$ https:<span class="comment">//%&#123;SERVER_NAME&#125;/$1 [L,R]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteBase /</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ /index.html/$<span class="number">1</span> [L]</span><br><span class="line">&lt;<span class="regexp">/IfModule&gt;</span></span><br></pre></td></tr></table></figure>
