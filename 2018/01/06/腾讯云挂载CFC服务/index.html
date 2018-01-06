@@ -114,7 +114,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="VPS,运维," />
 
 
 
@@ -127,18 +127,24 @@
 
 
 
-<meta name="description" content="Hexo 基本操作及命令">
-<meta name="keywords" content="hexo">
+<meta name="description" content="挂载文件系统详细步骤">
+<meta name="keywords" content="VPS,运维">
 <meta property="og:type" content="article">
-<meta property="og:title" content="总结 hexo 基本命令">
-<meta property="og:url" content="http://wongb.in/2017/12/27/总结-hexo-基本命令/index.html">
+<meta property="og:title" content="腾讯云挂载CFC服务">
+<meta property="og:url" content="http://wongb.in/2018/01/06/腾讯云挂载CFC服务/index.html">
 <meta property="og:site_name" content="BynnWong">
-<meta property="og:description" content="Hexo 基本操作及命令">
+<meta property="og:description" content="挂载文件系统详细步骤">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-31T16:55:57.432Z">
+<meta property="og:image" content="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg">
+<meta property="og:image" content="http://i4.bvimg.com/626044/b123a5b2dbc69b0c.jpg">
+<meta property="og:image" content="http://i4.bvimg.com/626044/68fb35be5dcceb2a.jpg">
+<meta property="og:image" content="http://i4.bvimg.com/626044/ffbed939522459a8.jpg">
+<meta property="og:image" content="http://i4.bvimg.com/626044/c0499438e86cfd64.png">
+<meta property="og:updated_time" content="2018-01-06T12:11:08.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="总结 hexo 基本命令">
-<meta name="twitter:description" content="Hexo 基本操作及命令">
+<meta name="twitter:title" content="腾讯云挂载CFC服务">
+<meta name="twitter:description" content="挂载文件系统详细步骤">
+<meta name="twitter:image" content="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg">
 
 
 
@@ -168,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="http://wongb.in/2017/12/27/总结-hexo-基本命令/"/>
+  <link rel="canonical" href="http://wongb.in/2018/01/06/腾讯云挂载CFC服务/"/>
 
 
 
 
 
-  <title>总结 hexo 基本命令 | BynnWong</title>
+  <title>腾讯云挂载CFC服务 | BynnWong</title>
   
 
 
@@ -301,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wongb.in/2017/12/27/总结-hexo-基本命令/">
+    <link itemprop="mainEntityOfPage" href="http://wongb.in/2018/01/06/腾讯云挂载CFC服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bynn">
@@ -318,7 +324,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">总结 hexo 基本命令</h2>
+          <h2 class="post-title" itemprop="name headline">腾讯云挂载CFC服务</h2>
         
 
         <div class="post-meta">
@@ -330,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T11:36:43+08:00">
-                2017-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T19:54:11+08:00">
+                2018-01-06
               </time>
             
 
@@ -368,108 +374,74 @@
       
 
       
-        <blockquote class="blockquote-center"><br>Hexo 基本操作及命令<br></blockquote>
-
+        <div class="note info"><p>挂载文件系统详细步骤 </p></div>
 <a id="more"></a>
-<ul>
-<li>总结   修改重要文件一定要先备份</li>
-<li><p>Hexo   本地写文章一定先进入 安装文件夹</p>
-<pre><code>&gt;hexo s  (端口被占用 hexo s -p 5000)
-&gt;hexo g  (编译)
-&gt;hexo d  (push github)
+<p>请按照以下指引挂载文件系统<br>在 Linux 上使用文件系统<br>在 CVM 上启动 NFS 客户端</p>
+<p>挂载前，请确保系统中已经安装了 nfs-utils 或 nfs-common，安装方法如下：</p>
+<pre><code>CentOS: sudo yum install nfs-utils
+Ubuntu 或 Debian: sudo apt-get install nfs-common
+</code></pre><p>NFS v4.0 挂载</p>
+<p>使用下列命令实现 NFS v4.0 挂载，文件系统的挂载路径可以到 “控制台-&gt;文件系统详情-&gt;挂载点信息” 中获取。</p>
+<pre><code>sudo mount -t nfs -o vers=4 &lt;挂载点IP&gt;:/ &lt;待挂载目标目录&gt;
+//注意，&quot;&lt;挂载点IP&gt;:/&quot; 与 &quot;&lt;待挂载目标目录&gt;&quot; 之间有一个空格。
+</code></pre><p>说明</p>
+<pre><code>挂载点IP：指 创建文件系统时，自动的生成的挂载点IP。
+目前默认挂载的是文件系统的根目录 &quot;/&quot;。 在文件系统中创建子目录后，可以挂载该子目录。
+待挂载目标目录： 在当前服务器上，需要挂载的目标目录，需要用户事先创建。
+</code></pre><p>示例</p>
+<pre><code>挂载 CFS 根目录：sudo mount -t nfs -o vers=4 10.0.0.1:/ /local/test。
+挂载 CFS 子目录 subfolder：sudo mount -t nfs -o vers=4 10.10.19.12:/subfolder /local/test
+</code></pre><p>NFS v3.0 挂载</p>
+<p>使用下列命令实现 NFS v3.0 挂载，文件系统的挂载路径可以到 “控制台-&gt;文件系统详情-&gt;挂载点信息” 中获取。</p>
+<pre><code>sudo mount -t nfs -o vers=3,nolock,proto=tcp &lt;挂载点IP&gt;:/ &lt;待挂载目标目录&gt;
+//注意，&quot;&lt;挂载点IP&gt;:/&quot; 与 &quot;&lt;待挂载目标目录&gt;&quot; 之间有一个空格。
+</code></pre><p>说明</p>
+<pre><code>挂载点IP：指创建文件系统时，自动的生成的挂载点 IP。
+NFS v3.0 仅支持子目录挂载，缺省文件系统子目录为 FSID 或者 &quot;nfs&quot; 。
+待挂载目标目录： 在当前服务器上，需要挂载的目标目录，需要用户事先创建。
+</code></pre><p>示例</p>
+<pre><code>挂载 CFS 子目录 subfolder：mount -t nfs -o vers=3,nolock,proto=tcp 10.10.19.12:/z3r6k95r /local/test
 
-&gt;hexo new&quot;postName&quot; #新建文章
-&gt;hexo new page&quot;pageName&quot; #新建页面
-&gt;hexo generate #生成静态页面至public目录
-&gt;hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
-&gt;hexo deploy #将.deploy目录部署到GitHub
-&gt;hexo help # 查看帮助
-&gt;hexo version #查看Hexo的版本
-</code></pre></li>
-</ul>
+挂载 CFS 子目录 subfolder：mount -t nfs -o vers=3,nolock,proto=tcp 10.10.19.12:/nfs /local/test
+</code></pre><p>查看挂载点信息</p>
+<p>挂载完成后，请使用如下命令查看已挂载的文件系统，</p>
+<pre><code>mount -l
+</code></pre><p>也可以使用如下命令查看该文件系统的容量信息，</p>
+<pre><code>df -h
+</code></pre><p>卸载共享目录</p>
+<p>当某些情况下需要卸载共享目录，请使用如下命令。其中 “目录名称” 为根目录或者文件系统的完整路径。</p>
+<pre><code>umount &lt;目录名称&gt;
+// 列如， umount /local/test
+</code></pre><p>在 Windows 上使用文件系统<br>开启 NFS 服务</p>
+<p>挂载前，请确保系统已经启动 NFS 服务。此处以 Windows Server 2012 R2 为示例，启动方法如下：</p>
+<pre><code>打开控制面板 -&gt; 程序 -&gt; 打开或关闭 windows 功能 -&gt; 【服务器角色】页签中勾选 &quot;NFS server&quot; -&gt; 【特性】中勾选 &quot;NFS 客户端&quot;，勾选 NFS 客户端即可开启 windows NFS 客户端服务.
+</code></pre><p>下图以 Windows Server 2012 R2 为示例。</p>
+<p>验证 NFS 服务是否启动</p>
+<p>打开 windows 下的命令行工具，在面板中敲入如下命令， 若返回 NFS 相关信息则表示 NFS 客户端正常运行中。</p>
+<pre><code>mount -h
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg" alt="Markdown"></h2><p>添加匿名访问用户和用户组<br>打开注册表</p>
+<p>在命令行窗口输入 regedit命令，回车即可打开注册表窗口。<br><img src="http://i4.bvimg.com/626044/b123a5b2dbc69b0c.jpg" alt="Markdown"></p>
+<p>添加配置项 AnonymousUid 和 AnonymousGid</p>
+<p>在打开的注册表中找到如下路径并选中</p>
+<pre><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default
+</code></pre><p>在右边空白处右键点击，弹出 “new”, 在菜单中选择 “DWORD(32-bit) Value” 或者 “QWORD(64-bit) Value”（根据您的操作系统位数选择）。此时，在列表中会出现一条新的记录，把名称栏修改为 AnonymousUid 即可，数据值采用默认的 0。使用同样方法继续添加一条名称为 AnonymousGid 的记录，数据也采用默认的0。</p>
+<p><img src="http://i4.bvimg.com/626044/68fb35be5dcceb2a.jpg" alt="Markdown"><br><img src="http://i4.bvimg.com/626044/ffbed939522459a8.jpg" alt="Markdown"><br>重启使配置生效</p>
 <hr>
-<p>一般用 <figure class="highlight plain"><figcaption><span>语言 这种语法表示代码区域，如:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">            test</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ul>
-<li>报错总结</li>
-</ul>
-<hr>
-<p>ERROR Deployer not found: git 或者 ERROR Deployer not found: github</p>
-<p>解决方法： npm install hexo-deployer-git –save</p>
-<hr>
-<p>如发生报错： ERROR Process failed: layout/.DS_Store , 那么进入主题里面layout和_partial目录下，使用删除命令：</p>
-<p>rm-rf.DS_Store</p>
-<hr>
-<p>ERROR Plugin load failed: hexo-server</p>
-<p>原因：</p>
-<p>Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.</p>
-<p>解决方法，执行命令：</p>
-<p>sudo npm install hexo-server</p>
-<p>执行命令hexo server，提示：Usage: hexo ….</p>
-<p>原因：</p>
-<p>我认为是没有生成本地服务</p>
-<p>解决方法，执行命令：</p>
-<p>npm install hexo-server –save</p>
-<hr>
-<p>提示：hexo-server@0.1.2 node_modules/hexo-server</p>
-<p>….</p>
-<p>表示成功了参考</p>
-<p>这个时候再执行：</p>
-<p>hexo-server</p>
-<p>得到:</p>
-<p>INFOHexois running at <a href="http://0.0.0.0:4000/.PressCtrl+C" target="_blank" rel="noopener">http://0.0.0.0:4000/.PressCtrl+C</a> to stop.</p>
-<p>这个时候再点击<a href="http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：" target="_blank" rel="noopener">http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：</a></p>
-<p>白板和Cannot GET / 几个字</p>
-<p>原因：</p>
-<p>由于2.6以后就更新了，我们需要手动配置些东西，我们需要输入下面三行命令：</p>
-<p>npm install hexo-renderer-ejs –save</p>
-<p>npm install hexo-renderer-stylus –save</p>
-<p>npm install hexo-renderer-marked –save</p>
-<p>这个时候再重新生成静态文件，命令：</p>
-<p>hexo generate（或hexo g）</p>
-<p>启动本地服务器：</p>
-<p>hexo server（或hexo s）</p>
-<hr>
-<ul>
-<li><p>Makedown 原生方式</p>
-<p>  | Name | Academy | score |<br>  | - | :-: | -: |<br>  | Harry Potter | Gryffindor| 90 |<br>  | Hermione Granger | Gryffindor | 100 |<br>  | Draco Malfoy | Slytherin | 90 |</p>
-</li>
-</ul>
-<p>Name    Academy     score<br>Harry Potter    Gryffindor  90<br>Hermione Granger    Gryffindor  100<br>Draco Malfoy    Slytherin   90</p>
-<p>语法说明： 1. 不管是哪种方式，第一行为表头，第二行分隔表头和主体部分，第三行开始每一行代表一个表格行；</p>
-<ol>
-<li>列与列之间用管道符号 “|” 隔开，原生方式的表格每一行的两边也要有管道符。</li>
-<li>可在第二行指定不同列单元格内容的对齐方式，默认为左对齐，在 “-” 右边加上 “:” 为右对齐，在 “-” 两侧同时加上 “:” 为居中对齐。</li>
-</ol>
-<ul>
-<li><p>更改nginx网站根目录<br>默认网站根目录为/usr/local/nginx/html，要将它改成/homw/www<br>vi /usr/local/nginx/conf/nginx.conf<br>将其中的</p>
-<pre><code>location / {
-    root   html;
-    index  index.php index.html index.htm;
-}
-</code></pre><p>改为</p>
-<pre><code>location / {
-    root   /home/www;
-    index  index.php index.html index.htm;
-}
-</code></pre><p>然后再将<br>location ~ .php$ {</p>
-<pre><code>    root           html;
-    fastcgi_pass   127.0.0.1:9000;
-    fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-    include        fastcgi_params;
-}
-</code></pre><p>改为<br>location ~ .php$ {</p>
-<pre><code>    root           /home/www;
-    fastcgi_pass   127.0.0.1:9000;
-    fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-    include        fastcgi_params;
-}
-</code></pre><p>然后重启nginx<br>已经安装了samba，所以要将vi /etc/samba/smb.conf中的[public]下的path值改为<br>path = /home/www/</p>
-</li>
-</ul>
-
+<p>关闭注册表并重启 windows 系统，完成注册表修改。<br>挂载文件系统</p>
+<p>在 windows 的命令行工具中输入如下命令，挂载文件系统。其中，系统缺省子目录为 “nfs”。</p>
+<pre><code>mount &lt;挂载点IP&gt;:/&lt;子目录&gt; &lt;共享目录名称&gt;:
+//列如： mount 10.10.0.12:/nfs X:
+</code></pre><p>若使用上述命令挂载，出现文件夹无法重命名的情况，请使用 FSID 进行挂载，挂载命令如下。</p>
+<pre><code>mount &lt;挂载点IP&gt;:/FSID &lt;共享目录名称&gt;:
+//列如： mount 10.10.0.12:/z3r6k95r X:
+</code></pre><p>注，FSID 可以到 “控制台-&gt;文件系统详情-&gt;挂载点信息” 中获取。</p>
+<p><img src="http://i4.bvimg.com/626044/c0499438e86cfd64.png" alt="Markdown"></p>
+<p>卸载共享目录</p>
+<p>当某些情况下需要卸载共享目录，请使用如下命令。其中 “目录名称” 为根目录或者文件系统的完整路径。</p>
+<pre><code>umount &lt;目录名称&gt;：
+// 列如， umount X：。
+// 可以使用 umount -a 卸载所有网络挂载
+</code></pre>
       
     </div>
     
@@ -491,7 +463,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/VPS/" rel="tag"><i class="fa fa-tag"></i> VPS</a>
+          
+            <a href="/tags/运维/" rel="tag"><i class="fa fa-tag"></i> 运维</a>
           
         </div>
       
@@ -504,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/27/cPanel主机中如何强制使用HTTPS/" rel="next" title="cPanel主机中如何强制使用HTTPS">
-                <i class="fa fa-chevron-left"></i> cPanel主机中如何强制使用HTTPS
+              <a href="/2018/01/01/2018/" rel="next" title="2018">
+                <i class="fa fa-chevron-left"></i> 2018
               </a>
             
           </div>
@@ -513,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/27/换环境更新博客方法/" rel="prev" title="换环境更新博客方法">
-                换环境更新博客方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,8 +540,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,6 +610,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"><a href="#" class="headerlink" title=""></a><img src="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg" alt="Markdown"></span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
