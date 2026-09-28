@@ -470,6 +470,13 @@ hr {
   background: transparent;
 }
 
+.copyright {
+  color: var(--muted) !important;
+  font-family: "Share Tech Mono", "Noto Sans SC", monospace !important;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
 img {
   filter: saturate(0.85) contrast(1.05);
 }
