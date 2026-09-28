@@ -7,32 +7,39 @@
   document.body.insertBefore(canvas, document.body.firstChild);
 
   var ctx = canvas.getContext("2d");
-  var glyphs = "01ABCDEF#$%&アイウエオカキクケコｻｼｽｾｿﾀﾁﾂﾃﾄ01<>/\\{}[]";
-  var fontSize = 14;
-  var columns = 0;
-  var drops = [];
+  var flakes = [];
+  var shapes = ["❄", "❅", "❆", "✻"];
+
+  function makeFlake(anywhere) {
+    return {
+      x: Math.random() * canvas.width,
+      y: anywhere ? Math.random() * canvas.height : -20,
+      r: 10 + Math.random() * 10,
+      s: 0.45 + Math.random() * 1.1,
+      drift: (Math.random() - 0.5) * 0.7,
+      shape: shapes[Math.floor(Math.random() * shapes.length)],
+      a: 0.35 + Math.random() * 0.55
+    };
+  }
 
   function size() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    columns = Math.ceil(canvas.width / fontSize);
-    drops = [];
-    for (var i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -40;
-    }
+    var count = Math.max(28, Math.round(canvas.width / 28));
+    flakes = [];
+    for (var i = 0; i < count; i++) flakes.push(makeFlake(true));
   }
 
   function frame() {
-    ctx.fillStyle = "rgba(5, 8, 5, 0.16)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = fontSize + "px Share Tech Mono, monospace";
-    for (var i = 0; i < drops.length; i++) {
-      var ch = glyphs.charAt(Math.floor(Math.random() * glyphs.length));
-      var y = drops[i] * fontSize;
-      ctx.fillStyle = Math.random() > 0.92 ? "#d6ff4a" : "rgba(57, 255, 20, 0.72)";
-      ctx.fillText(ch, i * fontSize, y);
-      if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-      drops[i] += 0.85;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < flakes.length; i++) {
+      var f = flakes[i];
+      f.y += f.s;
+      f.x += f.drift + Math.sin(f.y / 40) * 0.35;
+      ctx.font = f.r + "px serif";
+      ctx.fillStyle = "rgba(230, 248, 255, " + f.a + ")";
+      ctx.fillText(f.shape, f.x, f.y);
+      if (f.y > canvas.height + 24) flakes[i] = makeFlake(false);
     }
     requestAnimationFrame(frame);
   }

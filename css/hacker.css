@@ -58,7 +58,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.85;
 }
 
 .container,
@@ -174,8 +174,7 @@ body::before {
 }
 
 .post-block:hover {
-  border-left-color: var(--amber) !important;
-  box-shadow: -8px 0 18px rgba(57, 255, 20, 0.22);
+  box-shadow: none;
 }
 
 .site-brand-wrapper::before {
@@ -326,11 +325,10 @@ h1, h2, h3, h4, h5, h6,
 .post-block,
 .post-block.page {
   margin: 0 0 4px;
-  padding: 6px 4px 4px 18px;
+  padding: 6px 4px 4px 0;
   background: transparent;
   border: none;
-  border-left: 2px solid var(--green);
-  box-shadow: -6px 0 14px rgba(57, 255, 20, 0.08);
+  box-shadow: none;
 }
 
 .posts-expand .post-eof {
@@ -360,16 +358,15 @@ h1, h2, h3, h4, h5, h6,
 .post-body .note {
   background: transparent !important;
   border: none !important;
-  border-left: 2px solid var(--green) !important;
   border-radius: 0 !important;
   color: var(--text) !important;
-  padding: 4px 0 4px 14px !important;
+  padding: 4px 0 !important;
 }
 
 blockquote,
 .blockquote-center {
   color: var(--amber) !important;
-  border-left: 2px solid var(--green);
+  border-left: none !important;
 }
 
 .btn {
