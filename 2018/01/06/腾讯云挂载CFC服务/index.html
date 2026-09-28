@@ -138,16 +138,10 @@
 <meta property="og:site_name" content="BynnWong">
 <meta property="og:description" content="挂载文件系统详细步骤">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg">
-<meta property="og:image" content="http://i4.bvimg.com/626044/b123a5b2dbc69b0c.jpg">
-<meta property="og:image" content="http://i4.bvimg.com/626044/68fb35be5dcceb2a.jpg">
-<meta property="og:image" content="http://i4.bvimg.com/626044/ffbed939522459a8.jpg">
-<meta property="og:image" content="http://i4.bvimg.com/626044/c0499438e86cfd64.png">
 <meta property="og:updated_time" content="2018-01-06T12:11:08.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯云挂载CFC服务">
 <meta name="twitter:description" content="挂载文件系统详细步骤">
-<meta name="twitter:image" content="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg">
 
 
 
@@ -418,17 +412,16 @@ NFS v3.0 仅支持子目录挂载，缺省文件系统子目录为 FSID 或者 &
 </code></pre><p>在 Windows 上使用文件系统<br>开启 NFS 服务</p>
 <p>挂载前，请确保系统已经启动 NFS 服务。此处以 Windows Server 2012 R2 为示例，启动方法如下：</p>
 <pre><code>打开控制面板 -&gt; 程序 -&gt; 打开或关闭 windows 功能 -&gt; 【服务器角色】页签中勾选 &quot;NFS server&quot; -&gt; 【特性】中勾选 &quot;NFS 客户端&quot;，勾选 NFS 客户端即可开启 windows NFS 客户端服务.
-</code></pre><p>下图以 Windows Server 2012 R2 为示例。</p>
-<p>验证 NFS 服务是否启动</p>
+</code></pre><p>验证 NFS 服务是否启动</p>
 <p>打开 windows 下的命令行工具，在面板中敲入如下命令， 若返回 NFS 相关信息则表示 NFS 客户端正常运行中。</p>
 <pre><code>mount -h
-</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://coding.net/u/bynn/p/timg/git/raw/master/cfs/QCCF7.png" alt="Markdown"></h2><p>添加匿名访问用户和用户组<br>打开注册表</p>
-<p>在命令行窗口输入 regedit命令，回车即可打开注册表窗口。<br><img src="https://coding.net/u/bynn/p/timg/git/raw/master/cfs/QCCFS8.png" alt="Markdown"></p>
+</code></pre><p>添加匿名访问用户和用户组<br>打开注册表</p>
+<p>在命令行窗口输入 regedit命令，回车即可打开注册表窗口。<br></p>
 <p>添加配置项 AnonymousUid 和 AnonymousGid</p>
 <p>在打开的注册表中找到如下路径并选中</p>
 <pre><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default
 </code></pre><p>在右边空白处右键点击，弹出 “new”, 在菜单中选择 “DWORD(32-bit) Value” 或者 “QWORD(64-bit) Value”（根据您的操作系统位数选择）。此时，在列表中会出现一条新的记录，把名称栏修改为 AnonymousUid 即可，数据值采用默认的 0。使用同样方法继续添加一条名称为 AnonymousGid 的记录，数据也采用默认的0。</p>
-<p><img src="https://coding.net/u/bynn/p/timg/git/raw/master/cfs/QCCFS9.png" alt="Markdown"><br><img src="https://coding.net/u/bynn/p/timg/git/raw/master/cfs/QCCFS1.png" alt="Markdown"><br>重启使配置生效</p>
+<p>重启使配置生效</p>
 <hr>
 <p>关闭注册表并重启 windows 系统，完成注册表修改。<br>挂载文件系统</p>
 <p>在 windows 的命令行工具中输入如下命令，挂载文件系统。其中，系统缺省子目录为 “nfs”。</p>
@@ -438,7 +431,7 @@ NFS v3.0 仅支持子目录挂载，缺省文件系统子目录为 FSID 或者 &
 <pre><code>mount &lt;挂载点IP&gt;:/FSID &lt;共享目录名称&gt;:
 //列如： mount 10.10.0.12:/z3r6k95r X:
 </code></pre><p>注，FSID 可以到 “控制台-&gt;文件系统详情-&gt;挂载点信息” 中获取。</p>
-<p><img src="http://i4.bvimg.com/626044/c0499438e86cfd64.png" alt="Markdown"></p>
+
 <p>卸载共享目录</p>
 <p>当某些情况下需要卸载共享目录，请使用如下命令。其中 “目录名称” 为根目录或者文件系统的完整路径。</p>
 <pre><code>umount &lt;目录名称&gt;：
@@ -625,7 +618,7 @@ NFS v3.0 仅支持子目录挂载，缺省文件系统子目录为 FSID 或者 &
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"><a href="#" class="headerlink" title=""></a><img src="http://i4.bvimg.com/626044/17874ccec91ac1f8.jpg" alt="Markdown"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"><a href="#" class="headerlink" title=""></a></span></a></li></ol></div>
             
 
           </div>
